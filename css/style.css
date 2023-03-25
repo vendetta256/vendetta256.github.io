@@ -108,3 +108,12 @@ main {
 .disclaimer p {
     font-style: italic;
 }
+
+.content {
+  width: 100%;
+}
+
+.content iframe {
+  width: 100%;
+  height: auto;
+}
