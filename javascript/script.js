@@ -1,29 +1,23 @@
-var slideIndex = 0;
-showSlides();
+// Ambil elemen tombol dan iframe
+var homeBtn = document.getElementById("home-btn");
+var menuBtn = document.getElementById("menu-btn");
+var galleryBtn = document.getElementById("gallery-btn");
+var kontakBtn = document.getElementById("kontak-btn");
+var contentIframe = document.getElementById("content-iframe");
 
-function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    for (i = 0; i < slides.length; i++) {
-        slides[i].classList.remove("fade");
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}
-    slides[slideIndex-1].classList.add("fade");
-    setTimeout(showSlides, 5000);
-}
+// Tambahkan event listener pada tombol
+homeBtn.addEventListener("click", function() {
+  contentIframe.src = "./";
+});
 
-var menuIndex = 0;
-showMenuSlides(menuIndex);
+menuBtn.addEventListener("click", function() {
+  contentIframe.src = "https://chat.openai.com/chat";
+});
 
-function showMenuSlides() {
-    var i;
-    var slides = document.getElementsByClassName("menu-slide");
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    menuIndex++;
-    if (menuIndex > slides.length) {menuIndex = 1}
-    slides[menuIndex-1].style.display = "block";
-    setTimeout(showMenuSlides, 5000);
-}
+galleryBtn.addEventListener("click", function() {
+  contentIframe.src = "https://www.example.com/gallery";
+});
+
+kontakBtn.addEventListener("click", function() {
+  contentIframe.src = "https://www.example.com/gallery";
+});
