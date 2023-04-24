@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cari Kecocokan Login Router</title>
+</head>
+<body>
+	<form>
+		<label for="ip">IP Address:</label><br>
+		<input type="text" id="ip" name="ip" required><br>
+		<label for="user">Username:</label><br>
+		<input type="text" id="user" name="user" required><br>
+		<label for="pass">Password:</label><br>
+		<input type="password" id="pass" name="pass" required><br><br>
+		<button type="button" onclick="cari()">Cari</button>
+	</form>
+	<p id="hasil"></p>
+	<script>
+		function cari() {
+			var ip = document.getElementById("ip").value;
+			var user = document.getElementById("user").value;
+			var pass = document.getElementById("pass").value;
+
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var response = this.responseText;
+					if (response.indexOf("incorrect") > -1 || response.indexOf("unauthorized") > -1) {
+						document.getElementById("hasil").innerHTML = "Login gagal, coba lagi";
+					} else {
+						document.getElementById("hasil").innerHTML = "Login berhasil, user: " + user + " pass: " + pass;
+					}
+				}
+			};
+			xhttp.open("GET", "http://" + ip + "/", true, user, pass);
+			xhttp.send();
+		}
+	</script>
+</body>
+</html>
